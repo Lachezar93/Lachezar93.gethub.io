@@ -1,26 +1,36 @@
-using System;
+sing System;
 using System.Linq;
+
 namespace ObjectsAndClasses
 {
     class MainClass
     {
         public static void Main()
         {
+            // Create an instance of the Random class to generate random numbers.
             var rnd = new Random();
+
+            // Read a line of text from the console, split it into words, and convert to an array.
             var words = Console.ReadLine().Split().ToArray();
 
+            // Loop through each word in the array.
             for (int i = 0; i < words.Length; i++)
             {
+                // Generate a random index between 0 (inclusive) and the length of the array (exclusive).
                 var randomIndex = rnd.Next(0, words.Length);
 
-
+                // Store the word at the random index in variable 'a'.
                 var a = words[randomIndex];
+
+                // Store the current word (at index 'i') in variable 'b'.
                 var b = words[i];
-              
+
+                // Swap the words between their respective positions in the array.
                 words[randomIndex] = b;
                 words[i] = a;
             }
 
+            // Loop through the shuffled array and print each word.
             foreach (var item in words)
             {
                 Console.WriteLine(item);
