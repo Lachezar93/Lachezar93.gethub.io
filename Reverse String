@@ -1,1 +1,19 @@
-Undamentals # Lachezar93.gethub.io
+
+namespace ReverseString 
+{
+class Program
+{
+static void Main(string[] args)
+{
+string input = Console.Readline();
+
+Stack<string>reversed = new Stack<string>();
+
+for(int int I = 0; i<input.length;I++)
+{
+reversed.Push(String.Format($"{input[i]}"));
+}
+Console.Writeline(String.Join("",reversed));
+}
+}
+}
