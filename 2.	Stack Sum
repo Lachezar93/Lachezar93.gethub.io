@@ -1,40 +1,48 @@
 sing System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace ObjectsAndClasses
+class StackSum
 {
-    class MainClass
+    static void Main()
     {
-        public static void Main()
+        // Reading and parsing initial input
+        string[] inputNumbers = Console.ReadLine().Split();
+        Stack<int> stack = new Stack<int>();
+
+        foreach (string number in inputNumbers)
         {
-            // Create an instance of the Random class to generate random numbers.
-            var rnd = new Random();
+            stack.Push(int.Parse(number));
+        }
 
-            // Read a line of text from the console, split it into words, and convert to an array.
-            var words = Console.ReadLine().Split().ToArray();
+        // Processing commands
+        string command;
+        while ((command = Console.ReadLine().ToLower()) != "end")
+        {
+            string[] parts = command.Split();
 
-            // Loop through each word in the array.
-            for (int i = 0; i < words.Length; i++)
+            if (parts[0] == "add")
             {
-                // Generate a random index between 0 (inclusive) and the length of the array (exclusive).
-                var randomIndex = rnd.Next(0, words.Length);
-
-                // Store the word at the random index in variable 'a'.
-                var a = words[randomIndex];
-
-                // Store the current word (at index 'i') in variable 'b'.
-                var b = words[i];
-
-                // Swap the words between their respective positions in the array.
-                words[randomIndex] = b;
-                words[i] = a;
+                int n1 = int.Parse(parts[1]);
+                int n2 = int.Parse(parts[2]);
+                stack.Push(n1);
+                stack.Push(n2);
             }
-
-            // Loop through the shuffled array and print each word.
-            foreach (var item in words)
+            else if (parts[0] == "remove")
             {
-                Console.WriteLine(item);
+                int count = int.Parse(parts[1]);
+
+                if (stack.Count >= count)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        stack.Pop();
+                    }
+                }
             }
         }
+
+        // Printing the sum of remaining elements in the stack
+        Console.WriteLine("Sum: " + stack.Sum());
     }
 }
