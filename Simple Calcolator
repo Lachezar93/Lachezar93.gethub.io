@@ -1,0 +1,43 @@
+
+
+Copy code
+using System;
+using System.Collections.Generic;
+
+class SimpleCalculator
+{
+    static void Main()
+    {
+        // Read input from the user
+        string input = Console.ReadLine();
+
+        // Split the input into tokens (numbers and operators)
+        string[] tokens = input.Split(' ');
+
+        // Initialize a stack and push all tokens into it
+        Stack<string> stack = new Stack<string>(tokens);
+
+        // Start with the first number (pop from the stack)
+        int result = int.Parse(stack.Pop());
+
+        // Process the stack until empty
+        while (stack.Count > 0)
+        {
+            string operation = stack.Pop(); // Pop the operator (+ or -)
+            int number = int.Parse(stack.Pop()); // Pop the number
+
+            // Perform the respective operation
+            if (operation == "+")
+            {
+                result += number;
+            }
+            else if (operation == "-")
+            {
+                result -= number;
+            }
+        }
+
+        // Print the final result
+        Console.WriteLine(result);
+    }
+}
